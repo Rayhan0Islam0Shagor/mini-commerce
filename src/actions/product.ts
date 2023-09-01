@@ -1,17 +1,18 @@
 import { REACT_APP_BASE_URL } from '@/constants/urlConfig';
+import { FilterType } from '@/types/filter.type';
 import axios from 'axios';
 
-export const getProducts = async (searchParams: any) => {
-  const filter = searchParams.Filter || '';
+export const getProducts = async (searchParams: FilterType) => {
+  const filter = searchParams.filter;
   const sort = searchParams.sort || 'asc';
 
   if (searchParams && filter) {
     try {
-      const products = await axios.get(
+      const { data } = await axios.get(
         `${REACT_APP_BASE_URL}/products/category/${filter}`,
       );
-      console.log('🚀 ~ file: product.ts:13 ~ getPosts ~ products:', products);
-      return products;
+
+      return data;
     } catch (error) {
       console.log('🚀 ~ file: product.ts:14 ~ getPosts ~ error:', error);
     }

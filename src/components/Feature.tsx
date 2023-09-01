@@ -1,6 +1,5 @@
 'use client';
-import { getCategories } from '@/actions/categories';
-import React from 'react';
+import * as React from 'react';
 import Select from './common/Select';
 import useCustomRouter from '@/hooks/useRouter';
 
@@ -13,7 +12,7 @@ export type option = {
   sort: string;
 };
 
-const Filter = ({ categories }: FilterProps) => {
+const Feature = ({ categories }: FilterProps) => {
   const sort: string[] = ['asc', 'desc'];
   const [selectedOption, setSelectedOption] = React.useState<option>({
     filter: '',
@@ -23,11 +22,17 @@ const Filter = ({ categories }: FilterProps) => {
 
   const handleSelect = (operation: string, operator: string) => {
     if (operation === 'filter') {
+      pushQuery({
+        filter: operator,
+      });
       setSelectedOption((prev) => ({
         ...prev,
         filter: operator,
       }));
     } else {
+      pushQuery({
+        sort: operator,
+      });
       setSelectedOption((prev) => ({
         ...prev,
         sort: operator,
@@ -43,7 +48,7 @@ const Filter = ({ categories }: FilterProps) => {
         <Select
           label="Filter by Category :"
           operation="filter"
-          options={categories}
+          options={['All', ...categories]}
           handleSelect={handleSelect}
           selectedOption={selectedOption.filter}
         />
@@ -59,4 +64,4 @@ const Filter = ({ categories }: FilterProps) => {
   );
 };
 
-export default Filter;
+export default Feature;

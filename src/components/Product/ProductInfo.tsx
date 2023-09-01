@@ -1,6 +1,7 @@
 import { productType } from '@/types/product.type';
 import { priceFormat } from '@/utils/priceFormatter';
 import React from 'react';
+import CartButton from '../common/CartButton';
 
 const ProductInfo = ({ product }: { product: productType }) => {
   return (
@@ -19,12 +20,9 @@ const ProductInfo = ({ product }: { product: productType }) => {
         {priceFormat(product.price)}
       </p>
 
-      <button
-        type="button"
-        className="bg-gray-800 py-2 mt-4 px-4 text-lg text-white rounded-lg hover:bg-gray-700 active:bg-gray-600"
-      >
-        Add to cart
-      </button>
+      <div className="mt-4">
+        <CartButton product={product} />
+      </div>
     </aside>
   );
 };

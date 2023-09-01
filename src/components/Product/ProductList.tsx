@@ -1,9 +1,9 @@
 import { getProducts } from '@/actions/product';
 import { productType } from '@/types/product.type';
-import React from 'react';
 import ProductCard from './ProductCard';
+import { FilterType } from '@/types/filter.type';
 
-const ProductList = async ({ searchParams }: { searchParams: {} }) => {
+const ProductList = async ({ searchParams }: { searchParams: FilterType }) => {
   const products: productType[] = await getProducts(searchParams);
 
   return (

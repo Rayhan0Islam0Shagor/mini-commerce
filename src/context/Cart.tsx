@@ -6,7 +6,7 @@ const CartContext = React.createContext({
   items: [],
   totalAmount: 0,
   addItem: (item: productType) => {},
-  removeItem: (id: number | string) => {},
+  removeItem: (item: productType) => {},
   clearItems: () => {},
 });
 
@@ -31,7 +31,7 @@ const cartReducer = (state: any, action: ActionType) => {
       state.totalAmount + action.item.price * action.item.amount;
 
     const existingCartItemIndex = state.items.findIndex(
-      (item: any) => item.id === action.item.id,
+      (item: productType) => item.id === action.item.id,
     );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
@@ -55,14 +55,14 @@ const cartReducer = (state: any, action: ActionType) => {
 
   if (action.type === 'REMOVE') {
     const existingCartItemIndex = state.items.findIndex(
-      (item: any) => item.id === action.item.id,
+      (item: productType) => item.id === action.item.id,
     );
     const existingItem = state.items[existingCartItemIndex];
     const updatedTotalAmount = state.totalAmount - existingItem.price;
     let updatedItems;
     if (existingItem.amount === 1) {
       updatedItems = state.items.filter(
-        (item: any) => item.id !== action.item.id,
+        (item: productType) => item.id !== action.item.id,
       );
     } else {
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
@@ -89,13 +89,11 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     initialState,
   );
 
-  console.log(cartState);
-
-  const addItemCartHandler = (item: any) => {
+  const addItemCartHandler = (item: productType) => {
     dispatchCartAction({ type: 'ADD', item: item });
   };
 
-  const removeItemFromCartHandler = (item: any) => {
+  const removeItemFromCartHandler = (item: productType) => {
     dispatchCartAction({ type: 'REMOVE', item: item });
   };
 

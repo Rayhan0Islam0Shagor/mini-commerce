@@ -1,19 +1,29 @@
 'use client';
-import CartItem from '@/components/Product/CartItems';
+import CartItems from '@/components/Product/CartItems';
 import Subtotal from '@/components/Subtotal';
 import { useCartContext } from '@/context/Cart';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const CartPage = () => {
-  const { items } = useCartContext();
+  const { items, clearItems } = useCartContext();
 
   return (
-    <div className="pt-20">
+    <div className="pt-12">
       {items?.length > 0 ? (
-        <div className="justify-center px-6 md:flex md:space-x-6 xl:px-0">
-          <CartItem />
-          <Subtotal />
+        <div>
+          <button
+            type="button"
+            className="bg-gray-800 py-2 px-4 mb-4 text-lg text-white rounded-lg hover:bg-gray-700 active:bg-gray-600"
+            onClick={clearItems}
+          >
+            Clear Cart
+          </button>
+
+          <div className="justify-center px-6 md:flex md:space-x-6 xl:px-0">
+            <CartItems />
+            <Subtotal />
+          </div>
         </div>
       ) : (
         <div className="flex items-center justify-center flex-col">

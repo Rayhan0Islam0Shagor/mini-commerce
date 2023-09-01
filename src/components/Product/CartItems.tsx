@@ -10,7 +10,16 @@ const CartItems = () => {
   return (
     <div className="rounded-lg md:w-2/3">
       {items?.map(
-        ({ title, price, amount, category, image, id }: productType) => (
+        ({
+          title,
+          price,
+          amount,
+          category,
+          image,
+          id,
+          description,
+          rating,
+        }: productType) => (
           <CartItem
             key={id}
             title={title}
@@ -18,6 +27,9 @@ const CartItems = () => {
             amount={amount}
             category={category}
             image={image}
+            id={id}
+            description={description}
+            rating={rating}
           />
         ),
       )}

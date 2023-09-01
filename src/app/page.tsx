@@ -1,13 +1,14 @@
 import { getCategories } from '@/actions/categories';
-import Filter from '@/components/Filter';
+import Feature from '@/components/Feature';
 import ProductList from '@/components/Product/ProductList';
+import { FilterType } from '@/types/filter.type';
 
-const Home = async ({ searchParams }: { searchParams: {} }) => {
+const Home = async ({ searchParams }: { searchParams: FilterType }) => {
   const categories: string[] = await getCategories();
 
   return (
     <main className="">
-      <Filter categories={categories} />
+      <Feature categories={categories} />
       <ProductList searchParams={searchParams} />
     </main>
   );

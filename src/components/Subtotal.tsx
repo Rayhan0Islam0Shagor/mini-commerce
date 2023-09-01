@@ -4,17 +4,20 @@ import { useCartContext } from '@/context/Cart';
 import { priceFormat } from '@/utils/priceFormatter';
 import { useState } from 'react';
 import Loader from './common/Loader';
+import { useRouter } from 'next/navigation';
 
 const Subtotal = () => {
-  const cartContext = useCartContext();
+  const router = useRouter();
+  const { clearItems, totalAmount } = useCartContext();
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = () => {
     setLoading(true);
 
     setTimeout(() => {
-      cartContext?.clearItems();
+      clearItems();
       setLoading(false);
+      router.push('/success');
     }, 3000);
   };
 
@@ -22,7 +25,7 @@ const Subtotal = () => {
     <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
       <div className="mb-2 flex justify-between">
         <p className="text-gray-700">Subtotal</p>
-        <p className="text-gray-700">{priceFormat(cartContext?.totalAmount)}</p>
+        <p className="text-gray-700">{priceFormat(totalAmount)}</p>
       </div>
       <div className="flex justify-between">
         <p className="text-gray-700">Shipping</p>
@@ -32,9 +35,7 @@ const Subtotal = () => {
       <div className="flex justify-between">
         <p className="text-lg font-bold">Total</p>
         <div className="">
-          <p className="mb-1 text-lg font-bold">
-            {priceFormat(cartContext?.totalAmount)}
-          </p>
+          <p className="mb-1 text-lg font-bold">{priceFormat(totalAmount)}</p>
         </div>
       </div>
       <button

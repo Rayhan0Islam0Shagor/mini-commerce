@@ -35,7 +35,7 @@ const Select = ({
         <button
           onClick={handleExpand}
           type="button"
-          className="relative min-w-[200px] w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+          className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
@@ -72,7 +72,7 @@ const Select = ({
             {options?.map((category: string, idx: number) => (
               <li
                 key={idx}
-                className="text-gray-900  relative cursor-default select-none py-2 pl-3 pr-9"
+                className="text-gray-900  relative select-none py-2 pl-3 pr-9 cursor-pointer"
                 id="listbox-option-0"
                 role="option"
                 aria-selected
