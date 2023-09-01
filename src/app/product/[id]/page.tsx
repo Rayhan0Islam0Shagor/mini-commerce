@@ -10,6 +10,20 @@ interface ProductDetailsProps {
   };
 }
 
+export async function generateMetadata({
+  params: { id },
+}: ProductDetailsProps) {
+  const product: productType = await getProductById(id);
+
+  return {
+    title: product?.title,
+    description: product?.description,
+    alternates: {
+      canonical: `/product/${id}`,
+    },
+  };
+}
+
 const ProductDetails = async ({ params: { id } }: ProductDetailsProps) => {
   const product: productType = await getProductById(id);
 
