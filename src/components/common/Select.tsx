@@ -6,7 +6,7 @@ interface SelectProps {
   label: string;
   operation: string;
   handleSelect: (operation: string, operator: string) => void;
-  selectedOption: string;
+  selectedOption?: string;
 }
 
 const Select = ({

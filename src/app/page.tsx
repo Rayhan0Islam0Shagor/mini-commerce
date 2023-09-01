@@ -7,10 +7,10 @@ const Home = async ({ searchParams }: { searchParams: FilterType }) => {
   const categories: string[] = await getCategories();
 
   return (
-    <main className="">
+    <>
       <Feature categories={categories} />
       <ProductList searchParams={searchParams} />
-    </main>
+    </>
   );
 };
 

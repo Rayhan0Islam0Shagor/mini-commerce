@@ -16,19 +16,26 @@ const useCustomRouter = () => {
 
   // get features from search params
   const filter = searchParams.get('filter');
+
   const sort = searchParams.get('sort');
 
   // set features from search params to query
-  filter ? (query.filter = filter) : delete query.filter;
+  filter
+    ? (query.filter = filter)
+    : filter === 'All'
+    ? delete query.filter
+    : delete query.filter;
   sort ? (query.sort = sort) : delete query.sort;
 
   const pushQuery = ({ filter, sort }: { filter?: string; sort?: string }) => {
     if (filter !== undefined) {
       filter === 'All' ? delete query.filter : (query.filter = filter);
+      delete query.sort;
     }
 
     if (sort !== undefined) {
       sort === 'asc' ? delete query.sort : (query.sort = sort);
+      delete query.filter;
     }
 
     const newQuery = new URLSearchParams(query as string).toString();

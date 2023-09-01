@@ -14,29 +14,17 @@ export type option = {
 
 const Feature = ({ categories }: FilterProps) => {
   const sort: string[] = ['asc', 'desc'];
-  const [selectedOption, setSelectedOption] = React.useState<option>({
-    filter: '',
-    sort: 'asc',
-  });
-  const { pushQuery } = useCustomRouter();
+  const { pushQuery, query } = useCustomRouter();
 
   const handleSelect = (operation: string, operator: string) => {
     if (operation === 'filter') {
       pushQuery({
         filter: operator,
       });
-      setSelectedOption((prev) => ({
-        ...prev,
-        filter: operator,
-      }));
     } else {
       pushQuery({
         sort: operator,
       });
-      setSelectedOption((prev) => ({
-        ...prev,
-        sort: operator,
-      }));
     }
   };
 
@@ -50,14 +38,14 @@ const Feature = ({ categories }: FilterProps) => {
           operation="filter"
           options={['All', ...categories]}
           handleSelect={handleSelect}
-          selectedOption={selectedOption.filter}
+          selectedOption={query?.filter ? query?.filter : 'All'}
         />
         <Select
           label="Sort by :"
           operation="sort"
           options={sort}
           handleSelect={handleSelect}
-          selectedOption={selectedOption.sort}
+          selectedOption={query?.sort ? query?.sort : 'asc'}
         />
       </div>
     </section>
