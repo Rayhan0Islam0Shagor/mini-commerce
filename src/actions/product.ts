@@ -22,7 +22,7 @@ export const getProducts = async (searchParams: FilterType) => {
         `${REACT_APP_BASE_URL}/products?sort=${sort}`,
       );
 
-      return data?.sort(() => Math.random() - 0.5);
+      return data;
     } catch (error) {
       console.log('🚀 ~ file: product.ts:21 ~ getPosts ~ error:', error);
     }
