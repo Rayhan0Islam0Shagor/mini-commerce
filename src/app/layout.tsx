@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import Footer from '@/components/Layout/Footer';
 import CartProvider from '@/context/Cart';
+import ToastProvider from '@/components/common/ToastProvider';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <ToastProvider />
         <CartProvider>
           <Navbar />
           <main className="flex-1 w-full">{children}</main>
