@@ -13,6 +13,7 @@ const CustomImage = ({ alt, src }: { alt: string; src: string }) => {
         src={src}
         width={1200}
         height={630}
+        priority
         className={`w-full h-auto object-contain transition-opacity duration-200 ${
           loading ? 'opacity-0' : 'opacity-100'
         } `}

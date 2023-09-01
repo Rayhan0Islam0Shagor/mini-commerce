@@ -1,5 +1,5 @@
 'use client';
-import CartItems from '@/components/Product/CartItems';
+import CartItems from '@/components/Cart/CartItems';
 import Subtotal from '@/components/Subtotal';
 import { useCartContext } from '@/context/Cart';
 import Image from 'next/image';

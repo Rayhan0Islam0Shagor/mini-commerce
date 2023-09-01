@@ -25,7 +25,7 @@ const Select = ({
   return (
     <div className="flex items-center space-x-2 justify-between w-full md:w-fit space-y-2 md:space-y-0">
       <label
-        id="listbox-label"
+        id={label}
         className="block text-sm font-medium leading-6 text-gray-900"
       >
         {label}
@@ -38,7 +38,7 @@ const Select = ({
           className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
           aria-haspopup="listbox"
           aria-expanded="true"
-          aria-labelledby="listbox-label"
+          aria-labelledby={label}
         >
           <span className="flex items-center">
             <span className="ml-3 block truncate">

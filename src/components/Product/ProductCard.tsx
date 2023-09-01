@@ -3,16 +3,20 @@ import { priceFormat } from '@/utils/priceFormatter';
 import Link from 'next/link';
 import { FaStar, FaTag } from 'react-icons/fa';
 import CartButton from '../common/CartButton';
+import Image from 'next/image';
 
 const ProductCard = ({ product }: { product: productType }) => {
   return (
     <div className="group shadow-sm rounded-md flex items-center w-full flex-col">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
         <Link href={`/product/${product?.id}`} className="p-4">
-          <img
+          <Image
             src={product.image}
             alt={product.title}
             className="h-full w-full object-cover object-center group-hover:opacity-90"
+            height={1200}
+            priority
+            width={630}
           />
         </Link>
       </div>
