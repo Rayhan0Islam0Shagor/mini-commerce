@@ -3,7 +3,7 @@ import handleError from '@/utils/handleError';
 
 interface ErrorProps {
   error: unknown;
-  reset: any;
+  reset: () => void;
 }
 
 const Error = ({ error, reset }: ErrorProps) => {

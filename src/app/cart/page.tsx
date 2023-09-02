@@ -9,12 +9,12 @@ const CartPage = () => {
   const { items, clearItems } = useCartContext();
 
   return (
-    <div className="pt-12">
+    <div className="pt-12 pb-8">
       {items?.length > 0 ? (
         <div>
           <button
             type="button"
-            className="bg-gray-800 py-2 px-4 mb-4 text-lg text-white rounded-lg hover:bg-gray-700 active:bg-gray-600"
+            className="bg-gray-800 py-2 px-4 mx-4 mb-4 text-lg text-white rounded-lg hover:bg-gray-700 active:bg-gray-600"
             onClick={clearItems}
           >
             Clear Cart
