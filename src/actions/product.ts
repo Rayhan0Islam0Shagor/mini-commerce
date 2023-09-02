@@ -1,5 +1,6 @@
 import { REACT_APP_BASE_URL } from '@/constants/urlConfig';
 import { FilterType } from '@/types/filter.type';
+import handleError from '@/utils/handleError';
 import axios from 'axios';
 
 export const getProducts = async (searchParams: FilterType) => {
@@ -14,7 +15,7 @@ export const getProducts = async (searchParams: FilterType) => {
 
       return data;
     } catch (error) {
-      console.log('🚀 ~ file: product.ts:14 ~ getPosts ~ error:', error);
+      console.log(handleError(error));
     }
   } else {
     try {
@@ -24,7 +25,7 @@ export const getProducts = async (searchParams: FilterType) => {
 
       return data;
     } catch (error) {
-      console.log('🚀 ~ file: product.ts:21 ~ getPosts ~ error:', error);
+      console.log(handleError(error));
     }
   }
 };
@@ -35,6 +36,6 @@ export const getProductById = async (id: number | string) => {
 
     return data;
   } catch (error) {
-    console.log('🚀 ~ file: product.ts:35 ~ GetProductById ~ error:', error);
+    console.log(handleError(error));
   }
 };
