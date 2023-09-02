@@ -17,6 +17,7 @@ const Select = ({
   selectedOption,
 }: SelectProps) => {
   const [expand, setExpand] = React.useState(false);
+  let [isPending, startTransition] = React.useTransition();
 
   const handleExpand = () => {
     setExpand((prev: boolean) => !prev);
@@ -35,14 +36,18 @@ const Select = ({
         <button
           onClick={handleExpand}
           type="button"
-          className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+          className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800 sm:text-sm sm:leading-6"
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby={label}
         >
           <span className="flex items-center">
             <span className="ml-3 block truncate">
-              {selectedOption ? selectedOption : 'All'}
+              {isPending
+                ? 'Loading...'
+                : selectedOption
+                ? selectedOption
+                : 'All'}
             </span>
           </span>
           <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -77,7 +82,7 @@ const Select = ({
                 role="option"
                 aria-selected
                 onClick={() => {
-                  handleSelect(operation, category);
+                  startTransition(() => handleSelect(operation, category));
                   handleExpand();
                 }}
               >
@@ -93,4 +98,4 @@ const Select = ({
   );
 };
 
-export default Select;
+export default React.memo(Select);

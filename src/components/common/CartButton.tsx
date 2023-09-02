@@ -1,4 +1,5 @@
 'use client';
+import { memo } from 'react';
 import { useCartContext } from '@/context/Cart';
 import { productType } from '@/types/product.type';
 import { toast } from 'sonner';
@@ -25,4 +26,4 @@ const CartButton = ({ product }: { product: productType }) => {
   );
 };
 
-export default CartButton;
+export default memo(CartButton);

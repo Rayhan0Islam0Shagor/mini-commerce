@@ -7,11 +7,6 @@ interface FilterProps {
   categories: string[];
 }
 
-export type option = {
-  filter: string;
-  sort: string;
-};
-
 const Feature = ({ categories }: FilterProps) => {
   const sort: string[] = ['asc', 'desc'];
   const { pushQuery, query } = useCustomRouter();

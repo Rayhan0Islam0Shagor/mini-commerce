@@ -1,17 +1,16 @@
 'use client';
+import handleError from '@/utils/handleError';
 
 interface ErrorProps {
-  error: any;
+  error: unknown;
   reset: any;
 }
 
 const Error = ({ error, reset }: ErrorProps) => {
-  console.log('🚀 ~ file: error.tsx:9 ~ Error ~ error:', error, reset);
-
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="px-4 py-2 text-2xl text-center text-red-500 bg-gray-900 rounded">
-        {error?.message}
+        {handleError(error)}
       </h1>
 
       <button

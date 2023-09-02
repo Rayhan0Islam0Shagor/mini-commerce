@@ -15,9 +15,9 @@ const Subtotal = () => {
     setLoading(true);
 
     setTimeout(() => {
-      clearItems();
-      setLoading(false);
       router.push('/success');
+      setLoading(false);
+      clearItems();
     }, 3000);
   };
 
