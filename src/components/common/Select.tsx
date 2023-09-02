@@ -36,10 +36,11 @@ const Select = ({
         <button
           onClick={handleExpand}
           type="button"
-          className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800 sm:text-sm sm:leading-6"
+          className="relative min-w-[200px] w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:animate-pulse"
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby={label}
+          disabled={isPending}
         >
           <span className="flex items-center">
             <span className="ml-3 block truncate">
